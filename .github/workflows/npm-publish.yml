@@ -4,9 +4,24 @@
 name: Node.js Package nikhil
 run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 on:
-  push:
-    branches: 
-      - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Env'
+        default: 'warning' 
+        type: choice
+        options:
+        - Prod
+        - Dev
+        - ProdFedRAMP 
+      application:
+        description: 'Env'
+        default: 'warning' 
+        type: choice
+        options:
+        - SumoLogic
+        - Twistlock
+        - Redlock
 
 jobs:
   build:
